@@ -1,9 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
+import RecipeFilter from "./RecipeFilter";
 import RecipeItem from "./RecipeItem";
 
 const Recipes = props => {
+  const [filteredRating, setFilteredRating] = useState("5");
+
+  const filterChangeHandler = selectedRating => {
+    console.log("recipes.js");
+    setFilteredRating(selectedRating);
+  };
   return (
     <div>
+      <RecipeFilter selected={filteredRating} onChangeFilter={filterChangeHandler} />
       <RecipeItem
         title={props.recipes[0].title}
         type={props.recipes[0].type}

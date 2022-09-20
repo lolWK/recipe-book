@@ -17,10 +17,10 @@ const RecipeDate = props => {
     <div>
       {/* {props.date.toISOString()} */}
       {/* <span>{year}년 </span> */}
-      <span>{month} </span>
-      <span>{day}</span>
+      {/* <span>{month} </span> */}
+      {/* <span>{day}</span> */}
       <span>{date}</span>
-      {a}
+      {/* {a}  */}
     </div>
   );
 };

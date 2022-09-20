@@ -1,4 +1,5 @@
 import "./App.css";
+import NewRecipe from "./components/NewRecipe/NewRecipe";
 import Recipes from "./components/Recipes/Recipes";
 
 const App = () => {
@@ -32,9 +33,14 @@ const App = () => {
       score: 5,
     },
   ];
+  const addRecipeHandler = recipe => {
+    console.log("app/.js");
+    console.log(recipes);
+  };
   return (
     <div>
       <h1>RECIPE BOOK</h1>
+      <NewRecipe onAddRecipe={addRecipeHandler} />
       <Recipes recipes={recipes} />
     </div>
   );
