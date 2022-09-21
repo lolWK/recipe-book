@@ -92,7 +92,11 @@ const RecipeForm = props => {
           <input type="text" onChange={commentChangeHandler} value={enteredComment} />
         </div>
       </div>
-      <button>등록하기</button>
+      <button type="button" onClick={props.onCancel}>
+        취소하기
+      </button>
+
+      <button type="submit">등록하기</button>
     </form>
   );
 };

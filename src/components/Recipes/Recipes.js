@@ -1,41 +1,87 @@
 import React, {useState} from "react";
+import RecipesList from "./RecipesList";
 import RecipeFilter from "./RecipeFilter";
-import RecipeItem from "./RecipeItem";
+// import RecipeItem from "./RecipeItem";
 
 const Recipes = props => {
-  const [filteredRating, setFilteredRating] = useState("5");
+  /* 필터 부분임 ,,  */
+  const [filteredRating, setFilteredRating] = useState("0");
 
   const filterChangeHandler = selectedRating => {
-    console.log("recipes.js");
+    console.log("뭐지??", filteredRating);
+    // console.log(selectedRating);
     setFilteredRating(selectedRating);
   };
+
+  const filteredRecipes = props.recipes.filter(recipe => {
+    return recipe.rating === filteredRating;
+  });
+
+  // let recipesContent = <p>아직 없음</p>;
+  // if (filteredRating === "0") {
+  //   recipesContent = props.recipes.map(recipes => (
+  //     <RecipeItem
+  //       key={recipes.id}
+  //       title={recipes.title}
+  //       type={recipes.type}
+  //       date={recipes.date}
+  //       rating={recipes.rating}
+  //     />
+  //   ));
+  // }
+  // if (filteredRecipes.length > 0) {
+  //   recipesContent = filteredRecipes.map(recipes => (
+  //     <RecipeItem
+  //       key={recipes.id}
+  //       title={recipes.title}
+  //       type={recipes.type}
+  //       date={recipes.date}
+  //       rating={recipes.rating}
+  //     />
+  //   ));
+  // }
+
   return (
     <div>
       <RecipeFilter selected={filteredRating} onChangeFilter={filterChangeHandler} />
-      <RecipeItem
-        title={props.recipes[0].title}
-        type={props.recipes[0].type}
-        date={props.recipes[0].date}
-        score={props.recipes[0].score}
+      <RecipesList
+        filteredRecipes={filteredRecipes}
+        filteredRating={filteredRating}
+        recipes={props.recipes}
       />
-      <RecipeItem
-        title={props.recipes[1].title}
-        type={props.recipes[1].type}
-        date={props.recipes[1].date}
-        score={props.recipes[1].score}
-      />
-      <RecipeItem
-        title={props.recipes[2].title}
-        type={props.recipes[2].type}
-        date={props.recipes[2].date}
-        score={props.recipes[2].score}
-      />
-      <RecipeItem
-        title={props.recipes[3].title}
-        type={props.recipes[3].type}
-        date={props.recipes[3].date}
-        score={props.recipes[3].score}
-      />
+
+      {/* {filteredRating === "0" &&
+        props.recipes.map(recipes => (
+          <RecipeItem
+            key={recipes.id}
+            title={recipes.title}
+            type={recipes.type}
+            date={recipes.date}
+            rating={recipes.rating}
+          />
+        ))}
+
+      {filteredRecipes.length === 0 && <p>No Recipe found.</p>}
+      {filteredRecipes.length > 0 &&
+        filteredRecipes.map(recipes => (
+          <RecipeItem
+            key={recipes.id}
+            title={recipes.title}
+            type={recipes.type}
+            date={recipes.date}
+            rating={recipes.rating}
+          />
+        ))} */}
+
+      {/* {props.recipes.map(recipes => (
+        <RecipeItem
+          key={recipes.id}
+          title={recipes.title}
+          type={recipes.type}
+          date={recipes.date}
+          rating={recipes.rating}
+        />
+      ))} */}
     </div>
   );
 };
